@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Built-By: HariharanB
+Build-Jdk: 17.0.4.1
+Implementation-Title: mongodb-connector
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.acheron.camunda.connectors
+Implementation-Vendor: Camunda Services GmbH
+Implementation-URL: https://github.com/camunda/connector-sdk/mongodb-con
+ nector
+Created-By: Maven Integration for Eclipse
+

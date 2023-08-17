@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.acheron.camunda.connectors.mongodb.TestMongoFunctions
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.614 s -- in com.acheron.camunda.connectors.mongodb.TestMongoFunctions

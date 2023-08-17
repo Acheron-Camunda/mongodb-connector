@@ -1,0 +1,530 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "MongoDB Database Connector",
+  "id": "com.acheron.camunda.connectors.mongodb.v1",
+  "description": "Database operations on MongoDB Database",
+  "version": 1,
+  "entriesVisible": false,
+  "appliesTo": [
+    "bpmn:Task"
+  ],
+  "elementType": {
+    "value": "bpmn:ServiceTask"
+  },
+  "icon": {
+    "contents": "data:image/png;base64,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"
+  },
+  "category": {
+    "id": "connectors",
+    "name": "Connectors"
+  },
+  "groups": [
+    {
+      "id": "operation",
+      "label": "Operation"
+    },
+    {
+      "id": "method",
+      "label": "Method Type"
+    },
+    {
+      "id": "inputs",
+      "label": "Input Mapping"
+    },
+    {
+      "id": "output",
+      "label": "Output Mapping"
+    },
+    {
+      "id": "errors",
+      "label": "Error Handling"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "com.acheron.camunda.connectors.mongodb:1",
+      "editable": false,
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "id": "operation",
+      "label": "Operation",
+      "description": "Operation to be done",
+      "type": "Dropdown",
+      "value": "mongodb.create-database",
+      "choices": [
+        {
+          "name": "Create Collection",
+          "value": "mongodb.create-collection"
+        },
+        {
+          "name": "Insert Documents",
+          "value": "mongodb.insert-documents"
+        },
+        {
+          "name": "Retrieve Documents",
+          "value": "mongodb.retrieve-documents"
+        },
+        {
+          "name": "Update Documents",
+          "value": "mongodb.update-documents"
+        },
+        {
+          "name": "Delete Documents",
+          "value": "mongodb.delete-documents"
+        },
+        {
+          "name": "Drop Collection",
+          "value": "mongodb.delete-collection"
+        },
+        {
+          "name": "Drop Database",
+          "value": "mongodb.delete-database"
+        }
+      ],
+      "group": "operation",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "operation"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Database Name",
+      "description": "Name of the database to create the collection",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.databaseName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.create-collection"
+      }
+    },
+    {
+      "label": "Collection Name",
+      "description": "New collection name",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.collectionName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.create-collection"
+      }
+    },
+    {
+      "label": "Database Name",
+      "description": "Name of the database containing the collection",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.databaseName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.delete-documents"
+      }
+    },
+    {
+      "label": "Collection Name",
+      "description": "Collection name to delete data from",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.collectionName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.delete-documents"
+      }
+    },
+    {
+      "label": "Filters",
+      "description": "Data Type: Map.of(String, Object), Desc: Filter Map can have 3 keys filter, logicalOperator & filters",
+      "type": "Text",
+      "feel": "required",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.filters"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.delete-documents"
+      }
+    },
+    {
+      "label": "limit",
+      "description": "Maximum number of documents to delete",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "value": "=null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.limit"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.delete-documents"
+      }
+    },
+    {
+      "label": "Database Name",
+      "description": "Name of the database to create the collection",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.databaseName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.insert-documents"
+      }
+    },
+    {
+      "label": "Collection Name",
+      "description": "New collection name",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.collectionName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.insert-documents"
+      }
+    },
+    {
+      "label": "Document Data",
+      "description": "Data to insert into the collection",
+      "type": "Text",
+      "feel": "required",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.documentData"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.insert-documents"
+      }
+    },
+    {
+      "label": "Database Name",
+      "description": "Name of the database containing the collection",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.databaseName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.retrieve-documents"
+      }
+    },
+    {
+      "label": "Collection Name",
+      "description": "Collection name to read data from",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.collectionName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.retrieve-documents"
+      }
+    },
+    {
+      "label": "Field Names",
+      "description": "List of fields to return in result. If empty will return all fields",
+      "type": "Text",
+      "feel": "required",
+      "group": "inputs",
+      "value": "=null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.fieldNames"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.retrieve-documents"
+      }
+    },
+    {
+      "label": "Filters",
+      "description": "Data Type: Map.of(String, Object), Desc: Filter Map can have 3 keys filter, logicalOperator & filters",
+      "type": "Text",
+      "feel": "required",
+      "group": "inputs",
+      "value": "=null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.filters"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.retrieve-documents"
+      }
+    },
+    {
+      "label": "Order By",
+      "description": "Data Type: List.of(Map.of(String, String)), Desc: List of Maps will have 2 keys: sortOn and order.",
+      "type": "Text",
+      "feel": "required",
+      "group": "inputs",
+      "value": "=null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.orderBy"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.retrieve-documents"
+      }
+    },
+    {
+      "label": "Limit",
+      "description": "Data Type: Integer, Desc: Maximum number of documents in output",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "value": "=null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.limit"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.retrieve-documents"
+      }
+    },
+    {
+      "label": "Database Name",
+      "description": "Name of the database to delete the collection",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.databaseName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.delete-collection"
+      }
+    },
+    {
+      "label": "Collection Name",
+      "description": "Collection name to delete",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.collectionName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.delete-collection"
+      }
+    },
+    {
+      "label": "Database Name",
+      "description": "Name of the database to drop",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.databaseName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.delete-database"
+      }
+    },
+    {
+      "label": "Database Name",
+      "description": "Name of the database containing the collection",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.databaseName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.update-documents"
+      }
+    },
+    {
+      "label": "Collection Name",
+      "description": "collection Name in which data needs to be updated",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.collectionName"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.update-documents"
+      }
+    },
+    {
+      "label": "Update Map",
+      "description": "Context with column name and value to update data in collection. e.g. {\"columnName1\":colValue, \"columnName2\":\"colVal\"}",
+      "type": "Text",
+      "feel": "optional",
+      "group": "inputs",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.updateMap"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.update-documents"
+      }
+    },
+    {
+      "label": "Filters",
+      "description": "Data Type: Map.of(String, Object), Desc: Filter Map can have 3 keys filter, logicalOperator & filters. If filter is null or empty, all documents in collection will be updated",
+      "type": "Text",
+      "feel": "optional",
+      "group": "inputs",
+      "value": "=null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.filters"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.update-documents"
+      }
+    },
+    {
+      "label": "Limit",
+      "description": "Data Type: Integer, Desc: Maximum number of documents to update",
+      "type": "String",
+      "feel": "optional",
+      "group": "inputs",
+      "value": "=null",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "data.limit"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "mongodb.update-documents"
+      }
+    },
+    {
+      "label": "Result Variable",
+      "description": "Name of variable to store the response in",
+      "group": "output",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      }
+    },
+    {
+      "label": "Result Expression",
+      "description": "Expression to map the response into process variables",
+      "group": "output",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultExpression"
+      }
+    },
+    {
+      "label": "Error Expression",
+      "description": "Expression to handle errors. Details in the <a href=\"https://docs.camunda.io/docs/components/connectors/use-connectors/\" target=\"_blank\">Documentation</a>.",
+      "group": "errors",
+      "type": "Text",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "errorExpression"
+      }
+    }
+  ]
+}

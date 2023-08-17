@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_14auyel" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.12.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0">
+  <bpmn:process id="Process_UpdateDocuments" name="Update Documents" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0kxmwme</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0kxmwme" sourceRef="StartEvent_1" targetRef="Activity_UpdateDocuments" />
+    <bpmn:endEvent id="Event_1k4fziw">
+      <bpmn:incoming>Flow_0z6e8xz</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0z6e8xz" sourceRef="Activity_UpdateDocuments" targetRef="Event_1k4fziw" />
+    <bpmn:serviceTask id="Activity_UpdateDocuments" name="Update Documents" zeebe:modelerTemplate="com.acheron.camunda.connectors.mongodb.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/png;base64,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">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="com.acheron.camunda.connectors.mongodb:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="mongodb.update-documents" target="operation" />
+          <zeebe:input source="databaseName" target="data.databaseName" />
+          <zeebe:input source="collectionName" target="data.collectionName" />
+          <zeebe:input source="={&#10;  &#34;EmployeeID&#34;: 1000&#10;}" target="data.updateMap" />
+          <zeebe:input source="={&#10;  &#34;filterList&#34;: [&#10;    {&#10;      &#34;filter&#34;: {&#10;        &#34;colName&#34;: &#34;PersonID&#34;,&#10;        &#34;operator&#34;: &#34;=&#34;,&#10;        &#34;value&#34;: 2&#10;      }&#10;    }&#10;  ]&#10;}" target="data.filters" />
+          <zeebe:input source="=2" target="data.limit" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultVariable" value="response" />
+          <zeebe:header key="resultExpression" value="=response" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0kxmwme</bpmn:incoming>
+      <bpmn:outgoing>Flow_0z6e8xz</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_UpdateDocuments">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1k4fziw_di" bpmnElement="Event_1k4fziw">
+        <dc:Bounds x="432" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_16li0ky_di" bpmnElement="Activity_UpdateDocuments">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0kxmwme_di" bpmnElement="Flow_0kxmwme">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0z6e8xz_di" bpmnElement="Flow_0z6e8xz">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="432" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
