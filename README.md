@@ -124,3 +124,6 @@ This operation is used to delete the entire database.<br/>
 
 ## Sample BPMN
 The sample BPMN for all these operations are available in the "bpmn" folder.
+
+## Contact Information
+For any queries and further support, please drop us a mail at camunda.support@acheron-tech.com
