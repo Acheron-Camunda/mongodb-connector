@@ -125,5 +125,8 @@ This operation is used to delete the entire database.<br/>
 ## Sample BPMN
 The sample BPMN for all these operations are available in the "bpmn" folder.
 
+[Blog](https://blog.acheron-tech.com/camunda-mongodb-connector/) <br/>
+[Videos](https://www.youtube.com/playlist?list=PLKYpjK0JISJYJciJdrqPZVQtVqItBje14)
+
 ## Contact Information
 For any queries and further support, please drop us a mail at camunda.support@acheron-tech.com
