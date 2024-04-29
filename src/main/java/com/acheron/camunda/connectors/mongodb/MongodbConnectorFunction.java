@@ -1,7 +1,6 @@
 package com.acheron.camunda.connectors.mongodb;
 
 import com.acheron.camunda.connectors.mongodb.model.MongoDBRequest;
-import com.google.gson.Gson;
 import io.camunda.connector.api.annotation.OutboundConnector;
 import io.camunda.connector.api.outbound.OutboundConnectorContext;
 import io.camunda.connector.api.outbound.OutboundConnectorFunction;
@@ -21,15 +20,16 @@ import org.slf4j.LoggerFactory;
     type = "com.acheron.camunda.connectors.mongodb:1")
 public class MongodbConnectorFunction implements OutboundConnectorFunction {
   private static final Logger LOGGER = LoggerFactory.getLogger(MongodbConnectorFunction.class);
-  private final Gson gson;
 
-  public MongodbConnectorFunction() {
-    this(GsonSupplier.getGson());
-  }
-
-  public MongodbConnectorFunction(Gson gson) {
-    this.gson = gson;
-  }
+  //  private final Gson gson;
+  //
+  //  public MongodbConnectorFunction() {
+  //    this(GsonSupplier.getGson());
+  //  }
+  //
+  //  public MongodbConnectorFunction(Gson gson) {
+  //    this.gson = gson;
+  //  }
 
   /**
    * This is the method that is executed when the connector service task is encountered in the
@@ -41,10 +41,10 @@ public class MongodbConnectorFunction implements OutboundConnectorFunction {
    */
   @Override
   public Object execute(OutboundConnectorContext outboundConnectorContext) throws Exception {
-    String variables = outboundConnectorContext.getVariables();
-    final var mongoDBRequest = gson.fromJson(variables, MongoDBRequest.class);
-    LOGGER.info("{}", mongoDBRequest);
+    final var variables = outboundConnectorContext.bindVariables(MongoDBRequest.class);
+    //        final var mongoDBRequest = gson.fromJson(variables, );
+    LOGGER.info("{}", variables);
 
-    return mongoDBRequest.invoke(mongoDBRequest.getData().getDatabaseName());
+    return variables.invoke(variables.getData().getDatabaseName());
   }
 }

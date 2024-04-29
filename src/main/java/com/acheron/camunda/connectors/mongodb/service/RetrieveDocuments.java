@@ -5,7 +5,7 @@ import com.acheron.camunda.connectors.mongodb.model.MongoDBResponse;
 import com.acheron.camunda.connectors.mongodb.model.QueryResponse;
 import com.acheron.camunda.connectors.mongodb.util.FiltersWrapper;
 import com.acheron.camunda.connectors.mongodb.util.HelperMethods;
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -28,7 +28,7 @@ public class RetrieveDocuments implements MongoDBRequestData {
   private String collectionName;
   private List<String> fieldNames;
 
-  @SerializedName("filters")
+  @JsonProperty("filters")
   private FiltersWrapper filtersWrapper;
 
   private List<Map<String, String>> orderBy;

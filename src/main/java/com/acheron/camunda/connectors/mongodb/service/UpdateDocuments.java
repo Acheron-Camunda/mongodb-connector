@@ -5,7 +5,8 @@ import com.acheron.camunda.connectors.mongodb.model.MongoDBResponse;
 import com.acheron.camunda.connectors.mongodb.model.QueryResponse;
 import com.acheron.camunda.connectors.mongodb.util.FiltersWrapper;
 import com.acheron.camunda.connectors.mongodb.util.HelperMethods;
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -26,7 +27,11 @@ public class UpdateDocuments implements MongoDBRequestData {
   private String collectionName;
   private Map<String, Object> updateMap;
 
-  @SerializedName("filters")
+  @JsonProperty("filters")
+  @JsonSubTypes(
+      value = {
+        @JsonSubTypes.Type(value = FiltersWrapper.class, name = "filtersWrapper"),
+      })
   private FiltersWrapper filtersWrapper;
 
   private Integer limit;
