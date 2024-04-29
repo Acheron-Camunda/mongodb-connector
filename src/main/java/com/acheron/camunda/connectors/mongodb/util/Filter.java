@@ -1,5 +1,7 @@
 package com.acheron.camunda.connectors.mongodb.util;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 /**
  * The Filter class is a utility class that represents an individual filter criterion used in
  * MongoDB query building. It defines the column name, operator, and value to apply the filtering
@@ -7,6 +9,7 @@ package com.acheron.camunda.connectors.mongodb.util;
  *
  * @author HariharanB
  */
+@JsonTypeName("filter")
 public class Filter {
   String colName;
   String operator;

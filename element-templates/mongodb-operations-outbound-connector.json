@@ -46,7 +46,8 @@
       "value": "com.acheron.camunda.connectors.mongodb:1",
       "editable": false,
       "binding": {
-        "type": "zeebe:taskDefinition:type"
+        "type": "zeebe:property",
+        "name":"mongodb"
       }
     },
     {

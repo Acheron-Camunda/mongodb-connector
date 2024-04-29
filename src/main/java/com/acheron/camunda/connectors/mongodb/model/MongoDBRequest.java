@@ -1,9 +1,17 @@
 package com.acheron.camunda.connectors.mongodb.model;
 
+import com.acheron.camunda.connectors.mongodb.service.CreateCollection;
+import com.acheron.camunda.connectors.mongodb.service.DeleteCollection;
+import com.acheron.camunda.connectors.mongodb.service.DeleteDatabase;
+import com.acheron.camunda.connectors.mongodb.service.DeleteDocuments;
+import com.acheron.camunda.connectors.mongodb.service.InsertDocuments;
+import com.acheron.camunda.connectors.mongodb.service.RetrieveDocuments;
+import com.acheron.camunda.connectors.mongodb.service.UpdateDocuments;
 import com.acheron.camunda.connectors.mongodb.util.DatabaseClient;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.mongodb.client.MongoDatabase;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.sql.SQLException;
 import org.slf4j.Logger;
@@ -16,8 +24,23 @@ import org.slf4j.LoggerFactory;
  */
 public class MongoDBRequest<T extends MongoDBRequestData> {
 
-  @NotBlank private String operation;
-  @Valid @NotNull private T data;
+  @JsonTypeInfo(
+      use = JsonTypeInfo.Id.NAME,
+      include = JsonTypeInfo.As.EXTERNAL_PROPERTY,
+      property = "operation")
+  @JsonSubTypes(
+      value = {
+        @JsonSubTypes.Type(value = CreateCollection.class, name = "mongodb.create-collection"),
+        @JsonSubTypes.Type(value = InsertDocuments.class, name = "mongodb.insert-documents"),
+        @JsonSubTypes.Type(value = RetrieveDocuments.class, name = "mongodb.retrieve-documents"),
+        @JsonSubTypes.Type(value = UpdateDocuments.class, name = "mongodb.update-documents"),
+        @JsonSubTypes.Type(value = DeleteDocuments.class, name = "mongodb.delete-documents"),
+        @JsonSubTypes.Type(value = DeleteCollection.class, name = "mongodb.delete-collection"),
+        @JsonSubTypes.Type(value = DeleteDatabase.class, name = "mongodb.delete-database"),
+      })
+  @Valid
+  @NotNull
+  private T data;
 
   private static final Logger LOGGER = LoggerFactory.getLogger(MongoDBRequest.class);
 
@@ -40,13 +63,13 @@ public class MongoDBRequest<T extends MongoDBRequestData> {
     return data.invokeCut(database);
   }
 
-  public String getOperation() {
-    return operation;
-  }
-
-  public void setOperation(String operation) {
-    this.operation = operation;
-  }
+  //  public String getOperation() {
+  //    return operation;
+  //  }
+  //
+  //  public void setOperation(String operation) {
+  //    this.operation = operation;
+  //  }
 
   public T getData() {
     return data;
@@ -56,8 +79,8 @@ public class MongoDBRequest<T extends MongoDBRequestData> {
     this.data = data;
   }
 
-  @Override
-  public String toString() {
-    return "MongoDBRequest [operation=" + operation + ", data=" + data + "]";
-  }
+  //  @Override
+  //  public String toString() {
+  //    return "MongoDBRequest [operation=" + operation + ", data=" + data + "]";
+  //  }
 }
