@@ -1,14 +1,15 @@
 services:
   mongodb-connector:
-    image: mongodb-connector:latest
+    image: mongodb-connector:8.8.8-local
     container_name: mongodb-connector
 
     environment:
-      - ZEEBE_CLIENT_BROKER_GATEWAY-ADDRESS=zeebe:26500
-      - ZEEBE_CLIENT_SECURITY_PLAINTEXT=true
+      - CAMUNDA_CLIENT_MODE=self-managed
+      - CAMUNDA_CLIENT_GRPCADDRESS=http://zeebe:26500
+      - CAMUNDA_CLIENT_RESTADDRESS=http://zeebe:8080
+      - CAMUNDA_CLIENT_AUTH_METHOD=none
       - CAMUNDA_CONNECTOR_POLLING_ENABLED=false
       - CAMUNDA_CONNECTOR_WEBHOOK_ENABLED=false
-      - OPERATE_CLIENT_ENABLED=false
       - MONGODB_HOST=host.docker.internal
       - MONGODB_PORT=27017
       - MONGODB_USERNAME=root

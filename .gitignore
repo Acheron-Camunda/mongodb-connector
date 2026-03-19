@@ -32,3 +32,4 @@ target/
 HELP.md
 mvnw
 mvnw.cmd
+.m2repo/

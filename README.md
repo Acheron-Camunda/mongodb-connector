@@ -28,20 +28,22 @@ MONGODB_PORT = 27017 (whichever host and port where mongoDB is running)
 mvn clean package
 ```
 
-<li>Build a docker image
+<li>Build a Docker image against the published 8.8 connector runtime
 
 ```
-docker build -t mongodb-connector .
+docker build -t mongodb-connector:8.8.8-local .
 ```
 &emsp;Dockerfile :
 ```
-FROM camunda/connectors:0.21.3
+FROM camunda/connectors:8.8.8
 COPY target/mongodb-connector-0.0.1-SNAPSHOT-jar-with-dependencies.jar /opt/app/
 ENTRYPOINT ["/start.sh"]
 ```
 <li>Build a docker runtime
 
-  &emsp;&emsp;&emsp;Configure your runtime as per your installation from <a href="https://docs.camunda.io/docs/self-managed/connectors-deployment/connectors-configuration/">here</a> and start a container of the built docker image.
+  &emsp;&emsp;&emsp;Configure your runtime as per your installation from <a href="https://docs.camunda.io/docs/self-managed/connectors-deployment/connectors-configuration/">the official Camunda 8.8 connector runtime documentation</a>. For self-managed 8.8 runtimes, configure `CAMUNDA_CLIENT_MODE=self-managed`, `CAMUNDA_CLIENT_GRPCADDRESS`, and `CAMUNDA_CLIENT_RESTADDRESS`, then start a container from the built image.
+
+  &emsp;&emsp;&emsp;The sample `mongodb-connector.yaml` in this repository expects a local self-managed setup where the Orchestration Cluster REST API is reachable at `http://zeebe:8080` and gRPC is reachable at `http://zeebe:26500`.
 
 ### Element Template
 

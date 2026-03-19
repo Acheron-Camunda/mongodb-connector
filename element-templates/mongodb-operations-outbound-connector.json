@@ -1,5 +1,5 @@
 {
-  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema@0.39.0/resources/schema.json",
   "name": "MongoDB Database Connector",
   "id": "com.acheron.camunda.connectors.mongodb.v1",
   "description": "Database operations on MongoDB Database",
